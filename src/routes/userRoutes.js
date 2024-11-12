@@ -24,7 +24,7 @@ const router = express.Router();
  *               items:
  *                 $ref: '#/components/schemas/Usuario'
  */
-router.get('/', authMiddleware, roleMiddleware(['admin']), getUsers); // Solo los usuarios con tipo 'admin' pueden acceder
+router.get('/', authMiddleware, roleMiddleware(['admin', 'user']), getUsers); // Solo los usuarios con tipo 'admin' pueden acceder
 
 /**
  * @swagger

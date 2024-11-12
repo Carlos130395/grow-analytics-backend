@@ -49,14 +49,7 @@ const getUser = async (req, res) => {
 
 const createUser = async (req, res) => {
   try {
-    // Validación adicional si es necesario
-    const existingUser = await UserService.getUserByEmail(req.body.correo);
-    if (existingUser) {
-      return res
-        .status(400)
-        .json({ success: false, error: "El correo ya está registrado" });
-    }
-
+    // No es necesario verificar si el correo ya existe aquí, ya que se maneja en el servicio
     const user = await UserService.createUser(req.body);
     res.status(201).json({ success: true, data: user });
   } catch (error) {
